@@ -7,7 +7,7 @@ interface Props {
 
 export const Item: FC<Props> = ({ entity }) => {
   return (
-    <tr>
+    <tr key={entity.id}>
       <td>
         <span style={{ fontWeight: 'bold' }}>{entity.id}</span>
       </td>
