@@ -3,8 +3,10 @@ import { Todo } from '../../../../models/Todo'
 
 type addNewTodoFunction = (title: string) => void
 
+type todo = Pick<Todo, 'id' | 'title'>
+
 type Context = {
-  todoList: Todo[]
+  todoList: todo[]
   addNewTodo: addNewTodoFunction
 }
 
@@ -22,16 +24,14 @@ export function useTodo() {
 }
 
 export const TodoProvider: FC<Props> = ({ children }) => {
-  const [todos, setTodos] = useState<Todo[]>([])
+  const [todos, setTodos] = useState<todo[]>([])
 
   const addTodo: addNewTodoFunction = (title: string) => {
     setTodos(prev => [
       ...prev,
       {
-        userId: 1,
         id: prev.length + 1,
         title: title,
-        completed: false,
       },
     ])
   }
